@@ -1,24 +1,16 @@
 {
-  "name": "cra-template-typescript",
-  "version": "1.1.0",
-  "keywords": [
-    "react",
-    "create-react-app",
-    "template",
-    "typescript"
-  ],
-  "description": "The base TypeScript template for Create React App.",
+  "name": "@secure-t/cra-template",
+  "version": "1.0.0",
+  "description": "The Secure-T template for Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/create-react-app.git",
-    "directory": "packages/cra-template-typescript"
+    "url": "https://github.com/Secure-T-Team/cra-template.git"
   },
-  "license": "MIT",
   "engines": {
     "node": ">=10"
   },
   "bugs": {
-    "url": "https://github.com/facebook/create-react-app/issues"
+    "url": "https://github.com/Secure-T-Team/cra-template/issues"
   },
   "files": [
     "template",

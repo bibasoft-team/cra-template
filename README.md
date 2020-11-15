@@ -1,17 +1,23 @@
-# cra-template-typescript
+# Secure-T cra-template
 
-This is the official TypeScript template for [Create React App](https://github.com/facebook/create-react-app).
+This is the custom template for [Create React App](https://github.com/facebook/create-react-app).
 
-To use this template, add `--template typescript` when creating a new app.
+## Stack: 
+- Typescript
+- Sass
+- Apollo GraphQL
+- React Router
+
+To use this template, add `--template @secure-t/cra-template` when creating a new app.
 
 For example:
 
 ```sh
-npx create-react-app my-app --template typescript
+npx create-react-app my-app --template @secure-t/cra-template
 
 # or
 
-yarn create react-app my-app --template typescript
+yarn create react-app my-app --template @secure-t/cra-template
 ```
 
 For more information, please refer to:
