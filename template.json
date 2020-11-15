@@ -1,18 +1,62 @@
 {
-  "package": {
-    "dependencies": {
-      "@testing-library/jest-dom": "^5.11.4",
-      "@testing-library/react": "^11.1.0",
-      "@testing-library/user-event": "^12.1.10",
-      "@types/node": "^12.0.0",
-      "@types/react": "^16.9.53",
-      "@types/react-dom": "^16.9.8",
-      "@types/jest": "^26.0.15",
-      "typescript": "^4.0.3",
-      "web-vitals": "^0.2.4"
-    },
-    "eslintConfig": {
-      "extends": ["react-app", "react-app/jest"]
-    }
-  }
+	"package": {
+		"private": true,
+		"homepage": "/",
+		"dependencies": {
+			"@types/classnames": "^2.2.10",
+			"@apollo/client": "^3.1.4",
+			"@loadable/component": "^5.13.1",
+			"@types/loadable__component": "^5.13.0",
+			"@sentry/apm": "^5.19.2",
+			"@sentry/react": "^5.19.2",
+			"@types/node": "^12.0.0",
+			"apollo-upload-client": "^14.1.2",
+			"@types/react": "^16.9.53",
+			"classnames": "^2.2.6",
+			"date-fns": "^2.16.1",
+			"@types/react-dom": "^16.9.8",
+			"@types/react-router-dom": "^5.1.5",
+			"typescript": "^4.0.3",
+			"web-vitals": "^0.2.4",
+			"env-cmd": "^10.1.0",
+			"graphql": "^15.3.0",
+			"gzipper": "^4.0.0",
+			"node-sass": "npm:sass@^1.26.8",
+			"react-router": "^5.2.0",
+			"react-router-dom": "^5.2.0",
+			"sass": "^1.26.10",
+			"shelljs.exec": "^1.1.8"
+		},
+		"eslintConfig": {
+			"extends": ["react-app", "react-app/jest"]
+		},
+		"scripts": {
+			"start": "react-scripts start",
+			"build": "react-scripts build",
+			"gzip": "gzipper c ./build",
+			"deploy": "node scripts/deploy.js --unhandled-rejections=strict",
+			"prettier": "prettier --write \"src/**/*.{ts,tsx,css,scss,md,json,js,jsx}\"",
+			"graphql:generate": "graphql-codegen -r dotenv-flow/config",
+			"graphql:watch": "npm run graphql:generate -- -w"
+		},
+		"devDependencies": {
+			"@graphql-codegen/cli": "1.17.8",
+			"@graphql-codegen/import-types-preset": "^1.17.9",
+			"@graphql-codegen/typescript": "1.17.8",
+			"@graphql-codegen/typescript-operations": "^1.17.8",
+			"@graphql-codegen/typescript-react-apollo": "^2.0.6",
+			"dotenv-flow": "^3.2.0",
+			"husky": "^4.2.5",
+			"lint-staged": "^10.2.13",
+			"prettier": "^2.1.1"
+		},
+		"husky": {
+			"hooks": {
+				"pre-commit": "lint-staged"
+			}
+		},
+		"lint-staged": {
+			"src/**/*.(js|jsx|ts|tsx|json|css|scss|md)": ["prettier --write", "git add"]
+		}
+	}
 }
