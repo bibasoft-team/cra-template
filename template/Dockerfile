@@ -6,12 +6,11 @@ RUN npm ci --only=production
 
 # COPY environments environments
 COPY public public
-# COPY scripts scripts
+COPY scripts scripts
 COPY src src
 COPY ./.env* tsconfig.json ./
 
 
-# RUN npm run build -- --all=${BUILD_ALL} --version=${VERSION}
 RUN npm run build
 RUN npm run gzip
 
