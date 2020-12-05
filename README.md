@@ -1,4 +1,4 @@
-# Secure-T cra-template
+# Bibasoft cra-template
 
 This is the custom template for [Create React App](https://github.com/facebook/create-react-app).
 
@@ -8,16 +8,16 @@ This is the custom template for [Create React App](https://github.com/facebook/c
 - Apollo GraphQL
 - React Router
 
-To use this template, add `--template @secure-t/cra-template` when creating a new app.
+To use this template, add `--template @bibasoft/cra-template` when creating a new app.
 
 For example:
 
 ```sh
-npx create-react-app my-app --template @secure-t/cra-template
+npx create-react-app my-app --template @bibasoft/cra-template
 
 # or
 
-yarn create react-app my-app --template @secure-t/cra-template
+yarn create react-app my-app --template @bibasoft/cra-template
 ```
 
 For more information, please refer to:
