@@ -9,6 +9,10 @@ steps:
       NPM_TOKEN:
         from_secret: npm_token
     commands:
+      - echo _auth=$NPM_TOKEN >> .npmrc
+      - echo email=rediska1114@gmail.com >> .npmrc
+      - echo always-auth=true >> .npmrc
+      - cat .npmrc
       - npm publish --access public
     volumes:
       - name: docker
