@@ -1,7 +1,6 @@
 import { ApolloClient, from } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { onError } from '@apollo/client/link/error'
-import { personStore } from 'stores'
 import { createUploadLink } from 'apollo-upload-client'
 import cache from './cache'
 

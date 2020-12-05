@@ -16,7 +16,8 @@ exec(
         `s3`,
         `sync`,
         `${BUILD_PATH}`,
-        `s3://${combineURLs(BUCKET, TARGET)}`
+        `s3://${combineURLs(BUCKET, TARGET)}`,
+        `--only-show-errors`
     ].join(' '), { stdio: 'inherit' }
 );
 

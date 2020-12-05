@@ -1,3 +1,5 @@
-export default () => {
+ const polyfills = () => {
     // ADD your polyfills here
 }
+
+export default polyfills

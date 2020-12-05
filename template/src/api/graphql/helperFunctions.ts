@@ -65,23 +65,6 @@ const getQueryField = (query: any, queryName: string, field?: string | ((q: stri
 	return field(query[queryName])
 }
 
-const setQueryField = (
-	query: any,
-	queryName: string,
-	value: any,
-	field?: string | ((q: string) => object),
-) => {
-	const newQuery = JSON.parse(JSON.stringify(query))
-
-	if (!field) newQuery[queryName] = value
-	else if (typeof field === 'string') newQuery[queryName][field] = value
-	else {
-		// eslint-disable-next-line
-		let link = field(newQuery[queryName])
-		link = value
-	}
-	return newQuery
-}
 
 const modifyEdges = <K extends object & { __typename: string; id: number }>(
 	edges: Array<TEdge<K>>,
@@ -104,30 +87,6 @@ const modifyEdges = <K extends object & { __typename: string; id: number }>(
 				: add === 'prepend'
 				? [...data_array, ...edges]
 				: [...edges, ...data_array]
-		}
-	}
-}
-
-const mergeArray = <T extends { id: number }>(
-	arr: T[],
-	data: any,
-	operation: 'add' | 'delete' | 'update',
-	add: 'append' | 'prepend',
-) => {
-	const data_arr = Array.isArray(data) ? data : [data]
-	switch (operation) {
-		case 'add': {
-			return add === 'prepend' ? [...data_arr, ...arr] : [...arr, ...data_arr]
-		}
-		case 'delete': {
-			return arr.filter(e => e.id !== data.id)
-		}
-		case 'update': {
-			return arr.some(e => e.id === data.id)
-				? arr.map(e => (e.id === data.id ? { ...e, ...data } : e))
-				: add === 'prepend'
-				? [...data_arr, ...arr]
-				: [...arr, ...data_arr]
 		}
 	}
 }
@@ -159,44 +118,6 @@ export const updateRelay = <T extends { [key: string]: any }, K extends keyof T 
 
 	let newResult = JSON.parse(JSON.stringify(existingResult))
 	getQueryField(newResult, rootField, field).edges = newEdges
-
-	try {
-		cache.writeQuery({
-			query,
-			variables,
-			data: newResult,
-		})
-	} catch (err) {
-		console.error(err)
-	}
-}
-
-export const updateArray = <T extends { [key: string]: any }, K extends keyof T = keyof T>(
-	mutationName: K,
-	updateQuery: CacheUpdatesQuery,
-	operation: 'delete' | 'add' | 'update',
-	field?: string | ((q: any) => object),
-	variables?: Record<string, any>,
-	add: 'append' | 'prepend' = 'prepend',
-) => (cache: Apollo.ApolloCache<T>, { data }: Apollo.FetchResult<T>) => {
-	const { query } = deconstructQuery(updateQuery)
-	const rootField = getOperationFieldName(query)
-	if (!data || !data[mutationName]) return
-
-	let existingResult: TResult<T> | {}
-	try {
-		existingResult = cache.readQuery({ query, variables }) || {}
-	} catch (e) {
-		existingResult = {}
-		console.error(e)
-	}
-
-	const operationData = data[mutationName]
-
-	let array = getQueryField(existingResult, rootField, field) || []
-	const newArray = mergeArray(array as any, operationData, operation, add)
-
-	let newResult = setQueryField(existingResult, rootField, newArray, field)
 
 	try {
 		cache.writeQuery({
