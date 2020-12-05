@@ -12,7 +12,7 @@ steps:
       NPM_REGISTRY_URL: https://registry.npmjs.org/
     commands:
       - npm config set _auth $NPM_TOKEN
-      - npm config set registry $NPM_REGISTRY_URL
+      - npm config set @bibasoft:registry $NPM_REGISTRY_URL
       - npm config set always-auth=true
       - npm config set email=$NPM_EMAIL
       - npm whoami
