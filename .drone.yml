@@ -15,6 +15,7 @@ steps:
       - npm config set registry $NPM_REGISTRY_URL
       - npm config set always-auth=true
       - npm config set email=$NPM_EMAIL
+      - npm whoami
       - npm publish --access public
 
   - name: notify
