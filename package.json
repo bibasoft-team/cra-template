@@ -4,7 +4,7 @@
   "description": "The Bibasoft template for Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bibasoft-team/cra-template.git"
+    "url": "git+https://github.com/bibasoft-team/cra-template.git"
   },
   "engines": {
     "node": ">=10"
@@ -15,5 +15,7 @@
   "files": [
     "template",
     "template.json"
-  ]
+  ],
+  "homepage": "https://github.com/bibasoft-team/cra-template#readme",
+  "author": "rediska1114@gmail.com"
 }
