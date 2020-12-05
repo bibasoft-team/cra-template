@@ -11,10 +11,10 @@ steps:
       NPM_EMAIL: rediska1114@gmail.com
       NPM_REGISTRY_URL: https://registry.npmjs.org/
     commands:
-      - npm config set _auth ${NPM_TOKEN}
-      - npm config set registry ${NPM_REGISTRY_URL}
+      - npm config set _auth $NPM_TOKEN
+      - npm config set registry $NPM_REGISTRY_URL
       - npm config set always-auth=true
-      - npm config set email=${NPM_EMAIL}
+      - npm config set email=$NPM_EMAIL
       - npm publish --access public
 
   - name: notify
