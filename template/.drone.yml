@@ -8,12 +8,12 @@ steps:
     environment:
       VERSION: ${DRONE_SOURCE_BRANCH}
       AWS_ACCESS_KEY:
-        from_secret: aws_access_key_id
+        from_secret: s3_access_key_id
       AWS_SECRET_KEY:
-        from_secret: aws_secret_access_key
+        from_secret: s3_secret_access_key
       AWS_ENDPOINT:
-        from_secret: aws_endpoint
-      AWS_TARGET: ${DRONE_REPO_NAME}/develop/${DRONE_SOURCE_BRANCH}/
+        from_secret: s3_endpoint
+      AWS_TARGET: ${DRONE_REPO_NAME}/${DRONE_SOURCE_BRANCH}/
       AWS_BUCKET: my-super-bucket
     commands:
       - >-
@@ -54,7 +54,6 @@ trigger:
   branch:
     exclude:
       - master
-      - staging
 
 volumes:
   - name: docker
@@ -73,12 +72,12 @@ steps:
       VERSION: production
 
       AWS_ACCESS_KEY:
-        from_secret: aws_access_key_id
+        from_secret: s3_access_key_id
       AWS_SECRET_KEY:
-        from_secret: aws_secret_access_key
+        from_secret: s3_secret_access_key
       AWS_ENDPOINT:
-        from_secret: aws_endpoint
-      AWS_TARGET: ${DRONE_REPO_NAME}/production/
+        from_secret: s3_endpoint
+      AWS_TARGET: ${DRONE_REPO_NAME}/${DRONE_SOURCE_BRANCH}/
       AWS_BUCKET: my-super-bucket
     commands:
       - >-
