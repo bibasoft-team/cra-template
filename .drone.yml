@@ -15,7 +15,7 @@ steps:
       - npm config set access public
       - npm config set always-auth true
       - npm config set email ${NPM_EMAIL}
-      - cat npmrc
+      - cat .npmrc
       - npm whoami
       
       # - npm publish --access public
