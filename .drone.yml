@@ -10,13 +10,14 @@ steps:
         from_secret: npm_token
       NPM_EMAIL: rediska1114@gmail.com
     commands:
-      - echo $NPM_TOKEN
-      - npm config set _auth ${NPM_TOKEN}
+      - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
       - npm config set scope bibasoft
       - npm config set access public
       - npm config set always-auth true
       - npm config set email ${NPM_EMAIL}
+      - cat npmrc
       - npm whoami
+      
       # - npm publish --access public
 
   - name: notify
